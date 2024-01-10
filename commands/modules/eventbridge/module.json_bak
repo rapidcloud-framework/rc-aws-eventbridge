@@ -1,0 +1,28 @@
+{
+  "eventbridge": {
+    "create_eventbus": {
+      "cloud": "aws",
+      "enabled": true,
+      "help": "Create Eventbus",
+      "template_section": "EVENTBRIDGE",
+      "template_enabled": true,
+      "metadata_table": "metadata",
+      "create_aws_infra": true,
+      "id": "eventbus_name",
+      "args": {
+        "eventbus_name": {
+          "name": "eventbus_name",
+          "prompt": "Enter the eventbus name with no spaces",
+          "required": true,
+          "default": ""
+        },
+        "tags": {
+          "name": "tags",
+          "prompt": "Provide a json string with tags you wish to apply to the Eventbus, for example \"{'tag1':'value1','tag2':'value2'}\"",
+          "required": false,
+          "default": "{}"
+        }
+      }
+    }
+  }
+}

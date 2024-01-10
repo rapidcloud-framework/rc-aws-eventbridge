@@ -1,0 +1,54 @@
+{
+  "type": "Theia::Action",
+  "label": "Create Event Bus",
+  "id": "eventbridge_create_eventbus",
+  "module": "EVENTBRIDGE",
+  "steps": [
+    {
+      "type": "Theia::Step::Grid",
+      "id": "eventbridge_create_eventbus",
+      "datasource": "data?type=metadata&filter_name=module&filter_value=eventbridge",
+      "env_param_required": true,
+      "columns": ["name","timestamp"],
+      "title": "Create Event Bus",
+      "description": "",
+      "submit": "Continue"
+    },
+    {
+      "type": "Theia::Step::Form",
+      "id": "eventbridge_create_eventbus",
+      "title": "",
+      "description": "",
+      "submit": "Submit",
+      "not_editable": true,
+      "commands": [
+        {
+          "label": "create_eventbus",
+          "command": {
+            "phase": "eventbridge",
+            "command": "create_eventbus",
+            "refresh_status": true                 
+          }
+        }
+      ],
+      "controls": [
+        {
+          "type": "Theia::Control::Input",
+          "id": "eventbus_name",
+          "cli_id": "name",
+          "label": "Event Bus Namee",
+          "help": "",
+          "inputType": "text"
+        },
+        {
+          "type": "Theia::Control::Input",
+          "id": "tags",
+          "cli_id": "tags",
+          "label": "Tags",
+          "help": "",
+          "inputType": "text"
+        }
+      ]
+    }
+  ]
+}

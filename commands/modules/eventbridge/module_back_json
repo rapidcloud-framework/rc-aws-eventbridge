@@ -1,0 +1,21 @@
+{
+  "eventbridge": {
+    "create_eventbus": {
+      "cloud": "aws",
+      "enabled": true,
+      "help": "",
+      "template_section": "",
+      "template_enabled": false,
+      "metadata_table": "metadata",
+      "id": "name",
+      "args": {
+        "name": {
+          "name": "Name",
+          "prompt": "Enter Name with no spaces",
+          "required": true,
+          "default": ""
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "eventbridge": {
+    "create_eventbus": {
+      "cloud": "aws",
+      "enabled": true,
+      "help": "Create Eventbus",
+      "template_section": "EVENTBRIDGE",
+      "template_enabled": true,
+      "metadata_table": "metadata",
+      "create_aws_infra": true,
+      "id": "eventbus_name",
+      "args": {
+        "eventbus_name": {
+          "name": "eventbus_name",
+          "prompt": "Enter the eventbus name with no spaces",
+          "required": true,
+          "default": ""
+        },
+        "tags": {
+          "name": "tags",
+          "prompt": "Provide a json string with tags you wish to apply to the Eventbus, for example \"{'tag1':'value1','tag2':'value2'}\"",
+          "required": false,
+          "default": "{}"
+        }
+      }
+    },
+    "create_event_rule": {
+      "cloud": "aws",
+      "enabled": true,
+      "help": "Create Event Rule",
+      "template_section": "EVENTBRIDGE",
+      "template_enabled": true,
+      "metadata_table": "metadata",
+      "create_aws_infra": true,
+      "timestamp": "2023-11-22 18:34:00.249853",
+      "cmd_id": "20231122183400031476",
+      "id": "eventrule_name",
+      "args": {
+        "eventrule_name": {
+          "name": "eventrule_name",
+          "prompt": "Enter the Event Role name with no spaces",
+          "required": true,
+          "default": ""
+        },
+        "eventbus_name": {
+          "name": "eventbus_name",
+          "prompt": "Enter the name of the Event bus to associate with the rule",
+          "required": true,
+          "default": ""
+        },
+        "event_pattern": {
+          "name": "event_pattern",
+          "prompt": "Enter the event pattern in json format for event source for example \"{'source' : ['myapp.orders'] }\"",
+          "required": true,
+          "default": "{}"
+        },
+        "role_arn": {
+          "name": "role_arn",
+          "prompt": "Enter the Event Role name with no spaces",
+          "required": true,
+          "default": ""
+        },
+        "target_name": {
+          "name": "target_name",
+          "prompt": "name of the target",
+          "required": true,
+          "default": ""
+        },
+        "tags": {
+          "name": "tags",
+          "prompt": "Provide a json string with tags you wish to apply to the Eventbus, for example \"{'tag1':'value1','tag2':'value2'}\"",
+          "required": false,
+          "default": "{}"
+        }
+      }
+    }
+  }
+}

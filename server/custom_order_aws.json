@@ -1,0 +1,6 @@
+{
+  "EVENTBRIDGE": {
+    "create_eventbus": 1000,
+    "create_event_rule": 1001
+  }
+}

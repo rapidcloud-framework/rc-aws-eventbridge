@@ -1,0 +1,113 @@
+{
+  "type": "Theia::Action",
+  "label": "Create Event Rule",
+  "id": "eventbridge_create_event_rule",
+  "module": "EVENTBRIDGE",
+  "steps": [
+    {
+      "type": "Theia::Step::Grid",
+      "id": "eventbridge_create_event_rule",
+      "datasource": "data?type=metadata&filter_name=module&filter_value=eventbridge",
+      "env_param_required": true,
+      "columns": ["name","timestamp"],
+      "title": "Create Event Rule",
+      "description": "",
+      "submit": "Continue"
+    },
+    {
+      "type": "Theia::Step::Form",
+      "id": "eventbridge_create_event_rule",
+      "title": "",
+      "description": "",
+      "submit": "Submit",
+      "not_editable": true,
+      "commands": [
+        {
+          "label": "create_event_rule",
+          "command": {
+            "phase": "eventbridge",
+            "command": "create_event_rule",
+            "refresh_status": true                 
+          }
+        }
+      ],
+      "controls": [
+        {
+          "type": "Theia::Control::Input",
+          "id": "eventrule_name",
+          "cli_id": "name",
+          "label": "Event Rule Name",
+          "help": "",
+          "inputType": "text"
+        },
+        {
+          "type": "Theia::Control::Select",
+          "id": "eventbus_name",
+          "label": "Select Custom Event Bus",
+          "help": "Event Bus to be associated with the rule",
+          "datasource": "custom/module_eventbus?extra=true&module_name_arg=eventbridge",
+          "validations": [
+            {
+              "type": "Theia::Validation::Required",
+              "message": "Event Bus name is required"
+            }
+          ]
+        },
+        {
+          "type": "Theia::Control::Input",
+          "id": "event_pattern",
+          "cli_id": "event_pattern",
+          "label": "Event Pattern",
+          "help": "",
+          "inputType": "text"
+        },
+        {
+          "type": "Theia::Control::Input",
+          "id": "role_arn",
+          "cli_id": "role_arn",
+          "label": "Role ARN to be used for execution",
+          "help": "",
+          "inputType": "text"
+        },
+        {
+          "type": "Theia::Control::Select",
+          "id": "target_type",
+          "label": "target type",
+          "help": "Choose the target type for the rule",
+          "options": [
+            {
+              "type": "Theia::Option",
+              "label": "sqs",
+              "value": {
+                "type": "Theia::DataOption",
+                "value": "sqs"
+              }
+            },
+            {
+              "type": "Theia::Option",
+              "label": "sns",
+              "value": {
+                "type": "Theia::DataOption",
+                "value": "sns"
+              }
+            }
+          ]
+        },
+        {
+          "type": "Theia::Control::Select",
+          "id": "target_name",
+          "label": "Select the target",
+          "help": "target to trigger",
+          "dynamic_datasource": "custom/module_target?extra=true&module_name_arg=eventbridge&type=${target_type}",
+          "validations": [
+            {
+              "type": "Theia::Validation::Required",
+              "message": "Event Bus name is required"
+            }
+          ]
+        }
+        
+      ]
+    }
+  ]
+}
